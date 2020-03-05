@@ -1,12 +1,12 @@
 package org.dstadler.poiandroidtest.poitest.test;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import self.apache.poi.hssf.usermodel.HSSFWorkbook;
+import self.apache.poi.hssf.util.HSSFColor;
+import self.apache.poi.ss.usermodel.Cell;
+import self.apache.poi.ss.usermodel.CellStyle;
+import self.apache.poi.ss.usermodel.Row;
+import self.apache.poi.ss.usermodel.Sheet;
+import self.apache.poi.ss.usermodel.Workbook;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class TestIssue28 {
         Workbook wb = new HSSFWorkbook();
 
         CellStyle cs = wb.createCellStyle();
-        cs.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIME.getIndex());
+        cs.setFillForegroundColor(HSSFColor.LIME.index);
 
         Sheet sheet1 = wb.createSheet("wrok");
 

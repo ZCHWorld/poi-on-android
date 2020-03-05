@@ -6,20 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.common.usermodel.HyperlinkType;
+import self.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.poifs.crypt.TestSignatureInfo;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Hyperlink;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFColor;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFRun;
+import self.apache.poi.ss.usermodel.Cell;
+import self.apache.poi.ss.usermodel.Hyperlink;
+import self.apache.poi.ss.usermodel.Row;
+import self.apache.poi.ss.usermodel.Sheet;
+import self.apache.poi.ss.usermodel.Workbook;
+import self.apache.poi.ss.usermodel.WorkbookFactory;
+import self.apache.poi.xssf.usermodel.XSSFCellStyle;
+import self.apache.poi.xssf.usermodel.XSSFColor;
+import self.apache.poi.xssf.usermodel.XSSFWorkbook;
+import self.apache.poi.xwpf.usermodel.XWPFDocument;
+import self.apache.poi.xwpf.usermodel.XWPFParagraph;
+import self.apache.poi.xwpf.usermodel.XWPFRun;
 import org.dstadler.poiandroidtest.poitest.dummy.DummyContent;
 import org.dstadler.poiandroidtest.poitest.dummy.DummyItemWithCode;
 import org.dstadler.poiandroidtest.poitest.test.TestIssue28;
@@ -63,9 +63,9 @@ public class DocumentListActivity extends Activity
         setContentView(R.layout.activity_document_list);
 
 
-        System.setProperty("org.apache.poi.javax.xml.stream.XMLInputFactory", "com.fasterxml.aalto.stax.InputFactoryImpl");
-        System.setProperty("org.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
-        System.setProperty("org.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
+        System.setProperty("self.apache.poi.javax.xml.stream.XMLInputFactory", "com.fasterxml.aalto.stax.InputFactoryImpl");
+        System.setProperty("self.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
+        System.setProperty("self.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
 
         try {
             writeWorkbook();
@@ -96,14 +96,14 @@ public class DocumentListActivity extends Activity
 
             DummyContent.addItem(new DummyItemWithCode("c1", "Test Callable", new Callable<String>() {
                 @Override
-                public String call() {
+                public String call() throws Exception {
                     return "Result from Test Callable";
                 }
             }));
 
             DummyContent.addItem(new DummyItemWithCode("c2", "Test Signature Info - Crashes!!", new Callable<String>() {
                 @Override
-                public String call() {
+                public String call() throws Exception {
                     TestSignatureInfo test = new TestSignatureInfo();
                     test.testConstruct();
                     return "Signature Info constructed successfully";
@@ -127,7 +127,7 @@ public class DocumentListActivity extends Activity
                         if(StringUtils.isEmpty(content)) {
                             content = "<empty>";
                         }
-                        DummyContent.addItem(new DummyContent.DummyItem("z" + i, content, paragraph.getText()));
+                        DummyContent.addItem(new DummyContent.DummyItem("z" + Integer.toString(i), content, paragraph.getText()));
                         i++;
                     }
 
@@ -180,7 +180,7 @@ public class DocumentListActivity extends Activity
             cell.setCellValue("cell-3");
 
             XSSFCellStyle style = (XSSFCellStyle) wb.createCellStyle();
-            style.setFillBackgroundColor(new XSSFColor(new org.apache.poi.java.awt.Color(1, 2, 3)));
+            style.setFillBackgroundColor(new XSSFColor(new self.apache.poi.java.awt.Color(1, 2, 3)));
 
             Hyperlink link = wb.getCreationHelper().createHyperlink(HyperlinkType.URL);
             link.setAddress("http://www.google.at");
